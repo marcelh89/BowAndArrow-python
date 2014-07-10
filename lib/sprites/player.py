@@ -96,3 +96,5 @@ class Player(Sprite):
             if i.get_x() > 1000:
                 print "remove arrow"
                 self.arrows.remove(i)
+
+        return self.arrows
