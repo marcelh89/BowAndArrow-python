@@ -7,54 +7,41 @@ Created on Thu Apr 4 08:37 2013
 
 import pygame
 from pygame.locals import *
-from lib.sprites.player import Player
 from lib.sprites.balloon import Balloon
-from lib.sprites.arrow import Arrow
-
-from lib.helper.stages import stages_start
+from lib.sprites.tilemap import Tilemap
 
 
 def main():
-    #initialize screen
+    #initialize pygame modules and create windows
     pygame.init()
-
-    #DISPLAY
     screen = pygame.display.set_mode((800, 600))
+
     pygame.display.set_caption('Bow & Arrows')
     pygame.mouse.set_visible(1)
-    bg = pygame.Surface(screen.get_size())
-    bg = bg.convert()
-    bg.fill((0, 128, 1))
 
-    #ENTITIES
 
+    #clock object to set framerate
     clock = pygame.time.Clock()
-    font = pygame.font.Font(None, 20)
 
     level = 1
-    levels = {1: 'Target Practice', 2: 'More Target Practise', 3: 'Bouncing Bubbles', 4: 'Slimed', 5: 'Bulls Eye',
-          6: 'Fireballs', 7: 'Unfriedly Skies', 8: 'Whrrrrrrrrr'}
-
-    keepgoing = True
-    player = Player()
     level_finished = 1
 
-    #renderer for sprites
-    playersprite = pygame.sprite.RenderUpdates()
-    playersprite.add(player)
+    # create tilemap
+    map = Tilemap()
 
     collides = pygame.sprite.RenderUpdates()
 
-    arrows = pygame.sprite.RenderUpdates()
+    #arrows = pygame.sprite.RenderUpdates()
     monsters = pygame.sprite.RenderUpdates()
 
-    #ACTION
+
+    #gameloop
+    keepgoing = True
     while keepgoing:
 
-        #check for gameover
-        #if(no_arrows_left <= 0 or hit_by_enemy)
+        clock.tick(60)
 
-        x, y = pygame.mouse.get_pos()
+        screen.fill((0, 128, 1))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -64,56 +51,24 @@ def main():
                 if event.key == K_ESCAPE:
                     keepgoing = False
                     break
-            if event.type == MOUSEBUTTONDOWN:
-                print 'mousebuttondown'
 
-            if event.type == MOUSEBUTTONUP:
-                print 'mousebuttonup'
+            map.handle_input(event)
 
-                if (player.is_arrowed and player.is_targeting):
-                    player.shoot()
-                    arrows.add(Arrow())
-
-            if pygame.mouse.get_pressed()[0]:
-                print 'leftbutton'
-                if player.is_arrowed:
-                    player.target()
-
-            if pygame.mouse.get_pressed()[2]:
-                print 'rightbutton'
-                player.reload()
-
+            """
             #collisiondetection
             for m in monsters:
                 for a in arrows:
                     #inaccurate for balloons - subtract 70 see Arrow init
                     if pygame.sprite.collide_rect(a, m):
                         #if m.rect.collidepoint(a.get_x, a.get_y):
-                        m.set_shot()
-
-        time = pygame.time.get_ticks()
+                        m.set_shot()"""
 
         monsters.draw(screen)
         monsters.update()
-        arrows.draw(screen)
-        arrows.update()
-        playersprite.draw(screen)
-        playersprite.update()
+
+        map.render(event, screen)
 
         pygame.display.flip()
-        screen.blit(bg, (0, 0))
-        """screen.blit(score, score_pos)
-        screen.blit(highscore, highscore_pos)
-        screen.blit(leveltext, level_pos)
-        screen.blit(levelstext, levels_pos)
-        screen.blit(arrowstext, arrows_pos)
-        """
-        clock.tick(60)
-
-        #arrows out of border deletion
-        for i in arrows:
-            if i.get_x() > 1000:
-                arrows.remove(i)
 
         #monsters out of boarder deletion
         for m in monsters:

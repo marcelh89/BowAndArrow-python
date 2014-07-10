@@ -4,7 +4,10 @@ Created on Wed May  9 12:32:20 2012
 
 @author: marcel
 """
+import pygame
 from pygame.sprite import *
+from pygame.locals import *
+from lib.sprites.arrow import Arrow
 
 
 class Player(Sprite):
@@ -15,6 +18,7 @@ class Player(Sprite):
         self.rect = self.image.get_rect()
         self.is_arrowed = 0
         self.is_targeting = 0
+        self.arrows = pygame.sprite.RenderUpdates()
 
     def update(self):
         pos = pygame.mouse.get_pos()
@@ -58,3 +62,38 @@ class Player(Sprite):
 
     def get_rect(self):
         return self.rect
+
+    def handle_input(self, event):
+        if event.type == MOUSEBUTTONDOWN:
+            print 'mousebuttondown'
+
+        if event.type == MOUSEBUTTONUP:
+            print 'mousebuttonup'
+
+            if self.is_arrowed and self.is_targeting:
+                self.shoot()
+                self.arrows.add(Arrow())
+
+        if pygame.mouse.get_pressed()[0]:
+            print 'leftbutton'
+            if self.is_arrowed:
+                self.target()
+
+        if pygame.mouse.get_pressed()[2]:
+            print 'rightbutton'
+            self.reload()
+
+    def render(self, event, screen):
+        playersprite = pygame.sprite.RenderUpdates()
+        playersprite.add(self)
+        playersprite.draw(screen)
+        playersprite.update()
+
+        self.arrows.draw(screen)
+        self.arrows.update()
+
+        #arrows out of border deletion
+        for i in self.arrows:
+            if i.get_x() > 1000:
+                print "remove arrow"
+                self.arrows.remove(i)
