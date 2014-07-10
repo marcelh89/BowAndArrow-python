@@ -1,17 +1,16 @@
 # !/usr/bin/python
-'''
+"""
 Created on Wed May  9 12:32:20 2012
 
 @author: marcel
-'''
-#IMPORT & INITIALIZE
-import pygame, random
+"""
+
 from pygame.sprite import *
 
 
 class Balloon(Sprite):
     def __init__(self, color, x_pos, y_pos):
-        Sprite.__init__(pygame.sprite.Sprite)
+        Sprite.__init__(self)
         self.color = color
         #red_balloon
         if self.color == 'RED':

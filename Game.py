@@ -1,15 +1,15 @@
 # !/usr/bin/python
-'''
+"""
 Created on Thu Apr 4 08:37 2013
 
 @author: marcel
-'''
-#IMPORT & INITIALIZE
-import pygame, random
+"""
+
+import pygame
 from pygame.locals import *
-from lib.Player import Player
-from lib.Arrow import Arrow
-from lib.Balloon import Balloon
+from lib.sprites.player import Player
+from lib.sprites.balloon import Balloon
+from lib.sprites.arrow import Arrow
 
 
 def main():
@@ -17,11 +17,10 @@ def main():
     pygame.init()
 
     #DISPLAY
-    size = (width, height) = 800, 600
-    screen = pygame.display.set_mode(size)
+    screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption('Bow & Arrows')
     pygame.mouse.set_visible(1)
-    bg = pygame.Surface(size)
+    bg = pygame.Surface(screen.get_size())
     bg = bg.convert()
     bg.fill((0, 128, 1))
 
@@ -91,7 +90,7 @@ def main():
 
             if pygame.mouse.get_pressed()[0]:
                 print 'leftbutton'
-                if (player.is_arrowed):
+                if player.is_arrowed:
                     player.target()
 
             if pygame.mouse.get_pressed()[2]:

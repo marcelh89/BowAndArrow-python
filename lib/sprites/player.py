@@ -1,17 +1,15 @@
 # !/usr/bin/python
-'''
+"""
 Created on Wed May  9 12:32:20 2012
 
 @author: marcel
-'''
-#IMPORT & INITIALIZE
-import pygame, random
+"""
 from pygame.sprite import *
 
 
-class Player(pygame.sprite.Sprite):
+class Player(Sprite):
     def __init__(self):
-        Sprite.__init__(pygame.sprite.Sprite)
+        Sprite.__init__(self)
         #bowman simply standing
         self.image = pygame.image.load("./sprites/hero_without_arrow.png")
         self.rect = self.image.get_rect()
