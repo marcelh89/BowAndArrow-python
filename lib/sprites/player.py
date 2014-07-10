@@ -4,7 +4,6 @@ Created on Wed May  9 12:32:20 2012
 
 @author: marcel
 """
-import pygame
 from pygame.sprite import *
 from pygame.locals import *
 from lib.sprites.arrow import Arrow

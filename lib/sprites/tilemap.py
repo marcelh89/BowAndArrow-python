@@ -1,17 +1,23 @@
 __author__ = 'marcman'
 
 from lib.sprites.player import Player
-import pygame
+from lib.sprites.targets import Targets
+
 
 class Tilemap(object):
+
     def __init__(self):
-        # Player-Objekt erstellen.
+
         self.__player = Player()
+        self.__targets = Targets()
 
     def render(self, event, screen):
-        #tileset render
 
+        #render player
         self.__player.render(event, screen)
+
+        #render monsters
+        self.__targets.render(event, screen)
 
     def handle_input(self,event):
         self.__player.handle_input(event)
