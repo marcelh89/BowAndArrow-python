@@ -31,7 +31,7 @@ class Stages(object):
 
         #check if level already finished
         if len(self.targets) == 0:
-            #level+=1
+            self.stagenumber += 1
             self.finished = 1
 
         #check for collides
