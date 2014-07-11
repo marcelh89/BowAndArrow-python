@@ -19,7 +19,7 @@ class Balloon(Sprite):
 
         #yello_balloon
         if self.color == 'YELLOW':
-            self.speed = 5
+            self.speed = 1
             self.image = pygame.image.load("./sprites/ballon_yellow.png")
 
         self.rect = self.image.get_rect()
@@ -37,7 +37,7 @@ class Balloon(Sprite):
         else:
             self.rect.centery += 3
             if self.rect.centery > 800:
-                out_of_bounds = 1
+                self.out_of_bounds = 1
 
     def get_rect(self):
         return self.rect

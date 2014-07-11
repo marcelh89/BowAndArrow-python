@@ -2,6 +2,8 @@ __author__ = 'marcman'
 
 import pygame
 from lib.sprites.balloon import Balloon
+from stage.stage_01_training import Stage01Training
+from stage.stage_02_more_training import Stage02MoreTraining
 
 class Stages(object):
 
@@ -12,9 +14,14 @@ class Stages(object):
 
     def handle_targets(self):
         if self.stagenumber == 1:
-            self.targets.add(Balloon('RED', x * 30 + 300, 600) for x in range(15))
+            stage = Stage01Training("Training")
+            self.targets.add(stage.get_targets())
+
         elif self.stagenumber == 2:
-            self.targets.add(Balloon('YELLOW', x * 30 + 300, 600) for x in range(15))
+            #self.targets.add(Balloon('YELLOW', x * 30 + 300, 600) for x in range(15))
+            stage = Stage02MoreTraining("More Training")
+            self.targets.add(stage.get_targets())
+
 
     def render(self, event, screen, arrows):
 
