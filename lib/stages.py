@@ -14,7 +14,7 @@ class Stages(object):
 
     def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
-        self.stagenumber = 4
+        self.stagenumber = 1
         self.finished = 1
         self.player = player
 
