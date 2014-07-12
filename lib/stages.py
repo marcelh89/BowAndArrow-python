@@ -15,7 +15,7 @@ class Stages(object):
 
     def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
-        self.stagenumber = 6
+        self.stagenumber = 5
         self.finished = 1
         self.player = player
 
@@ -38,7 +38,7 @@ class Stages(object):
             self.targets.add(stage.get_targets())
         elif nr == 5:
             stage = Stage05Bullseye('Bulls Eye')
-            #self.targets.add(stage.get_targets())
+            self.targets.add(stage.get_targets())
         elif nr == 6:
             stage = Stage06Fires('Fireballs')
             self.targets.add(stage.get_targets())
@@ -85,15 +85,24 @@ class Stages(object):
 
             #targets <--> arrows
             for a in arrows:
-                #inaccurate for balloons - subtract 70 see Arrow init
-                if pygame.sprite.collide_rect(a, m):
-                    #if m.rect.collidepoint(a.get_x, a.get_y):
-                    m.set_shot()
+
+                #special level 5 bullseye
+                if self.stagenumber == 5:
+                    mr = m.get_rect()
+                    ar = a.get_rect()
+
+                    if mr.collidepoint(ar.centerx, ar.centery):
+                        m.set_shot()
+                else:
+                    #inaccurate for balloons - subtract 70 see Arrow init
+                    if pygame.sprite.collide_rect(a, m):
+                        #if m.rect.collidepoint(a.get_x, a.get_y):
+                        m.set_shot()
 
         #render all targets
         self.targets.draw(screen)
         self.targets.update()
 
-        #print len(self.targets)
+        print len(self.targets)
 
         return 0
