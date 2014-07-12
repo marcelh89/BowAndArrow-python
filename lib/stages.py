@@ -7,14 +7,15 @@ from stage.stage_03_butterflies import Stage03Butterflies
 from stage.stage_04_slimes import Stage04Slimes
 from stage.stage_05_bullseye import Stage05Bullseye
 from stage.stage_06_fires import Stage06Fires
-from stage.stage_07_winds import Stage07Winds
+from stage.stage_07_voltures import Stage07Voltures
+from stage.stage_08_winds import Stage08Winds
 
 
 class Stages(object):
 
     def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
-        self.stagenumber = 4
+        self.stagenumber = 6
         self.finished = 1
         self.player = player
 
@@ -37,16 +38,16 @@ class Stages(object):
             self.targets.add(stage.get_targets())
         elif nr == 5:
             stage = Stage05Bullseye('Bulls Eye')
-            #self.target.sadd(stage.get_target())
+            #self.targets.add(stage.get_targets())
         elif nr == 6:
             stage = Stage06Fires('Fireballs')
-            #self.target.sadd(stage.get_target())
+            self.targets.add(stage.get_targets())
         elif nr == 7:
-            stage = Stage07Winds('Whrrrrrrrrr')
-            #self.target.sadd(stage.get_target())
-
-        """levels = {1:'Target Practice',2:'More Target Practise',3:'Bouncing Bubbles',4:'Slimed', 5:'Bulls Eye',6: 'Fireballs'
-                  ,7:'Unfriedly Skies', 8:'Whrrrrrrrrr'}"""
+            stage = Stage07Voltures('Unfriendly Skies')
+            self.targets.add(stage.get_targets())
+        elif nr == 8:
+            stage = Stage08Winds('Whrrrrrrrrr')
+            self.targets.add(stage.get_targets())
 
     def cleanup(self):
         for a in self.targets:

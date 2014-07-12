@@ -10,6 +10,6 @@ Created on Wed May  9 12:32:20 2012
 from lib.sprites.leftmover import Leftmover
 
 
-class Slime(Leftmover):
+class Winds(Leftmover):
     def __init__(self, x_pos, y_pos):
-        Leftmover.__init__(self, x_pos, y_pos, "slime.png", "slime.png", "slime_dead.png")
+        Leftmover.__init__(self, x_pos, y_pos, "wind1.png","wind2.png", "wind_dead.png")
