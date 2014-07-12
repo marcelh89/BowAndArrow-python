@@ -9,7 +9,7 @@ from pygame.sprite import *
 
 
 class Butterfly(Sprite):
-    def __init__(self, color, x_pos, y_pos):
+    def __init__(self, x_pos, y_pos):
         Sprite.__init__(self)
         #red_balloon
         self.speed = 1
@@ -48,8 +48,8 @@ class Butterfly(Sprite):
                     self.rect.centery -= self.speed
 
         else:
-            self.rect.centery -= 3
-            self.rect.centerx -= 2
+            self.rect.centery -= self.speed * 3
+            self.rect.centerx -= self.speed * 2
             if self.rect.centery < -100:
                 self.out_of_bounds = 1
 
@@ -60,9 +60,7 @@ class Butterfly(Sprite):
         return self.rect.centery
 
     def set_shot(self):
-
         self.image = pygame.image.load("./lib/sprites/img/butterfly.png")
-
         self.shot = 1
         self.speed = 1
 

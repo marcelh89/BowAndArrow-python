@@ -15,7 +15,13 @@ class Arrow(Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = pygame.mouse.get_pos()
         self.rect.centerx = 150
-        self.rect.centery -= 10
+
+        if self.rect.centery < 100:
+            self.rect.centery = 100
+        elif self.rect.centery > 500:
+            self.rect.centery = 500
+
+        self.rect.centery -= 11
 
     def update(self):
         self.rect.centerx += 5
