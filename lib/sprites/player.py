@@ -26,10 +26,10 @@ class Player(Sprite):
         self.rect.centerx = 100
 
         if y < 100:
-            print "y less than 100"
+            #print "y less than 100"
             self.rect.centery = 100
         elif y > 500:
-            print "y greater than 500"
+            #print "y greater than 500"
             self.rect.centery = 500
         else:
             self.rect.centery = y
@@ -54,23 +54,23 @@ class Player(Sprite):
         return self.rect
 
     def handle_input(self, event):
-        if event.type == MOUSEBUTTONDOWN:
-            print 'mousebuttondown'
+        """if event.type == MOUSEBUTTONDOWN:
+            print 'mousebuttondown'"""
 
         if event.type == MOUSEBUTTONUP:
-            print 'mousebuttonup'
+            #print 'mousebuttonup'
 
             if self.is_arrowed and self.is_targeting:
                 self.shoot()
                 self.arrows.add(Arrow())
 
         if pygame.mouse.get_pressed()[0]:
-            print 'leftbutton'
+            #print 'leftbutton'
             if self.is_arrowed:
                 self.target()
 
         if pygame.mouse.get_pressed()[2]:
-            print 'rightbutton'
+            #print 'rightbutton'
             self.reload()
 
     def render(self, event, screen):
@@ -83,7 +83,7 @@ class Player(Sprite):
         #arrows out of border deletion
         for i in self.arrows:
             if i.get_x() > 1000:
-                print "remove arrow"
+                #print "remove arrow"
                 self.arrows.remove(i)
 
         return self.arrows

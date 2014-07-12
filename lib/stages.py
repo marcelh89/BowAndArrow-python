@@ -14,7 +14,7 @@ class Stages(object):
 
     def __init__(self):
         self.targets = pygame.sprite.RenderUpdates()
-        self.stagenumber = 1
+        self.stagenumber = 3
         self.finished = 1
 
     def handle_targets(self):
@@ -30,7 +30,7 @@ class Stages(object):
 
         elif nr == 3:
             stage = Stage03Butterflies('Bouncing Bubbles')
-            #self.targets.add(stage.get_targets())
+            self.targets.add(stage.get_targets())
         elif nr == 4:
             stage = Stage04Slimes('Slimed')
             #self.target.sadd(stage.get_target())
