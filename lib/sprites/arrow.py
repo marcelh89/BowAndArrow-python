@@ -14,7 +14,7 @@ class Arrow(Sprite):
         self.image = pygame.image.load("./lib/sprites/img/arrow.png")
         self.rect = self.image.get_rect()
         self.rect.center = pygame.mouse.get_pos()
-        self.rect.centerx += 70
+        self.rect.centerx = 150
         self.rect.centery -= 10
 
     def update(self):
