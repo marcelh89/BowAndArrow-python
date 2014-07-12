@@ -14,7 +14,7 @@ class Slime(Sprite):
     def __init__(self, x_pos, y_pos):
         Sprite.__init__(self)
         #red_balloon
-        self.speed = 2
+        self.speed = 3
         self.image = pygame.image.load("./lib/sprites/img/slime.png")
         self.rect = self.image.get_rect()
         self.rect.centerx = x_pos
