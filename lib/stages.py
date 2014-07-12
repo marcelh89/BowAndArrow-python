@@ -1,7 +1,6 @@
 __author__ = 'marcman'
 
 import pygame
-from lib.sprites.balloon import Balloon
 from stage.stage_01_training import Stage01Training
 from stage.stage_02_more_training import Stage02MoreTraining
 from stage.stage_03_butterflies import Stage03Butterflies
@@ -10,12 +9,14 @@ from stage.stage_05_bullseye import Stage05Bullseye
 from stage.stage_06_fires import Stage06Fires
 from stage.stage_07_winds import Stage07Winds
 
+
 class Stages(object):
 
-    def __init__(self):
+    def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
         self.stagenumber = 4
         self.finished = 1
+        self.player = player
 
     def handle_targets(self):
         nr = self.stagenumber
@@ -49,6 +50,8 @@ class Stages(object):
 
     def render(self, event, screen, arrows):
 
+        p = self.player
+
         #create monsters
         if self.finished:
             self.finished = 0
@@ -67,6 +70,12 @@ class Stages(object):
 
         #check for collides
         for m in self.targets:
+
+            #targets <--> player
+            if pygame.sprite.collide_rect(m, p):
+                print "Gameover!"
+
+            #targets <--> arrows
             for a in arrows:
                 #inaccurate for balloons - subtract 70 see Arrow init
                 if pygame.sprite.collide_rect(a, m):
