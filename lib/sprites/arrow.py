@@ -11,7 +11,7 @@ class Arrow(Sprite):
     def __init__(self):
         Sprite.__init__(self)
         #bowman simply standing
-        self.image = pygame.image.load("./sprites/arrow.png")
+        self.image = pygame.image.load("./lib/sprites/img/arrow.png")
         self.rect = self.image.get_rect()
         self.rect.center = pygame.mouse.get_pos()
         self.rect.centerx += 70
