@@ -18,30 +18,21 @@ class Player(Sprite):
         self.is_arrowed = 0
         self.is_targeting = 0
         self.arrows = pygame.sprite.RenderUpdates()
+        self.playersprite = pygame.sprite.RenderUpdates()
+        self.playersprite.add(self)
 
     def update(self):
-        pos = pygame.mouse.get_pos()
+        x, y = pygame.mouse.get_pos()
+        self.rect.centerx = 100
 
-        #left and right borders
-        if pos[0] < 100:
-            self.rect.centerx = 100
-            self.rect.centery = pos[1]
-        if pos[0] > 750:
-            self.rect.centerx = 750
-            self.rect.centery = pos[1]
-        #top and bottom borders
-        if pos[1] < 100:
+        if y < 100:
+            print "y less than 100"
             self.rect.centery = 100
-            self.rect.centerx = pos[0]
-        if pos[1] > 550:
-            self.rect.centery = 550
-            self.rect.centerx = pos[0]
-        #corners(top-left, top-right, bottom-left, bottom-right)
-        if pos == (100, 100) or pos == (750, 100) or pos == (100, 550) or pos == (750, 550):
-            self.rect.center = pos
-
-        if pos[0] in range(101, 749) and pos[1] in range(101, 549):
-            self.rect.center = pos
+        elif y > 500:
+            print "y greater than 500"
+            self.rect.centery = 500
+        else:
+            self.rect.centery = y
 
     def reload(self):
         #bowman is armed
@@ -83,10 +74,8 @@ class Player(Sprite):
             self.reload()
 
     def render(self, event, screen):
-        playersprite = pygame.sprite.RenderUpdates()
-        playersprite.add(self)
-        playersprite.draw(screen)
-        playersprite.update()
+        self.playersprite.draw(screen)
+        self.playersprite.update()
 
         self.arrows.draw(screen)
         self.arrows.update()
