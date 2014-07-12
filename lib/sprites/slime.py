@@ -28,6 +28,9 @@ class Slime(Sprite):
         if not self.shot:
             self.rect.centerx -= self.speed
 
+            if self.rect.centerx < - 100:
+                self.shot = 1
+
         else:
             self.rect.centery += self.speed * 3
             if self.rect.centery > 800:

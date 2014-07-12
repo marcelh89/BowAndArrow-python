@@ -48,6 +48,10 @@ class Stages(object):
         """levels = {1:'Target Practice',2:'More Target Practise',3:'Bouncing Bubbles',4:'Slimed', 5:'Bulls Eye',6: 'Fireballs'
                   ,7:'Unfriedly Skies', 8:'Whrrrrrrrrr'}"""
 
+    def cleanup(self):
+        for a in self.targets:
+            self.targets.remove(a)
+
     def render(self, event, screen, arrows):
 
         p = self.player
@@ -67,6 +71,7 @@ class Stages(object):
         if len(self.targets) == 0:
             self.stagenumber += 1
             self.finished = 1
+            return 2
 
         #check for collides
         for m in self.targets:
@@ -74,6 +79,8 @@ class Stages(object):
             #targets <--> player
             if pygame.sprite.collide_rect(m, p):
                 print "Gameover!"
+                self.cleanup()
+                return 1
 
             #targets <--> arrows
             for a in arrows:
@@ -85,3 +92,7 @@ class Stages(object):
         #render all targets
         self.targets.draw(screen)
         self.targets.update()
+
+        print len(self.targets)
+
+        return 0
