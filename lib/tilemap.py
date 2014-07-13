@@ -6,6 +6,7 @@ from pygame.locals import *
 from lib.stages import Stages
 from lib.sprites.infobar import Infobar
 
+
 class Tilemap(object):
 
     def __init__(self):
@@ -16,7 +17,6 @@ class Tilemap(object):
         self.status = 0
         self.stages = Stages(self.player)
         self.infobar = Infobar(self.score, 1, "Training", 20)
-
 
     def render(self, event, screen):
 

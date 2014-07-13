@@ -120,6 +120,6 @@ class Stages(object):
         self.targets.draw(screen)
         self.targets.update()
 
-        print len(self.targets)
+        #print len(self.targets)
 
         return 0

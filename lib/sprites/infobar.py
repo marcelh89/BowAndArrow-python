@@ -1,7 +1,7 @@
 __author__ = 'marcman'
 
 from pygame.sprite import *
-
+from lib.sprites.infobar_arrow import InfobarArrow
 
 class Infobar(Sprite):
     def __init__(self, score, stage, stagetext, arrowcount):
@@ -29,6 +29,8 @@ class Infobar(Sprite):
         screen.blit(stage, (300, 10))
         screen.blit(stagetext, (400, 10))
 
-        #for _ in range(self.arrowcount):
+        #TODO extremely slows down game
+        #for x in range(self.arrowcount):
+            #self.infosprite.add(InfobarArrow(600 + x*5, 15))
 
 
