@@ -35,7 +35,6 @@ class Tilemap(object):
 
             #check for click mouse to go on
             if event.type == MOUSEBUTTONUP:
-                self.stages.stagenumber += 1
                 self.status = 0
 
         else:
