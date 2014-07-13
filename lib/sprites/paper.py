@@ -24,18 +24,20 @@ class Paper(Sprite):
 
     def render(self, status, screen):
 
-        description = self.font.render(self.get_description(status), 1, (10, 10, 10))
-        heading = self.font.render(self.get_heading(status), 1, (10, 10, 10))
+        description = self.font.render(get_description(status), 1, (10, 10, 10))
+        heading = self.font.render(get_heading(status), 1, (10, 10, 10))
 
         self.papersprite.draw(screen)
         self.papersprite.update()
         screen.blit(heading, (350, 180))
         screen.blit(description, (220, 280))
 
-    def get_description(self, status):
+
+def get_description(status):
         description = ['', 'Finally, you got killed, oh what a pitty', 'Great Job here!']
         return description[status]
 
-    def get_heading(self, status):
+
+def get_heading(status):
         heading = ['', 'GAMEOVER', 'SUCCESS']
         return heading[status]

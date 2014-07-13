@@ -17,7 +17,7 @@ class Stages(object):
 
     def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
-        self.stagenumber = 5
+        self.stagenumber = 6
         self.finished = 1
         self.player = player
 
@@ -51,9 +51,14 @@ class Stages(object):
             stage = Stage08Winds('Whrrrrrrrrr')
             self.targets.add(stage.get_targets())
 
-    def cleanup(self):
+    def cleanup_targets(self):
         for a in self.targets:
             self.targets.remove(a)
+
+    def cleanup_all(self):
+        self.cleanup_targets()
+        self.stagenumber = 1
+        self.finished = 1
 
     def render(self, event, screen, arrows):
 
@@ -62,7 +67,6 @@ class Stages(object):
         #create monsters
         if self.finished:
             self.finished = 0
-
             self.handle_targets()
 
         #check for targets out of range
@@ -82,7 +86,7 @@ class Stages(object):
             #targets <--> player
             if pygame.sprite.collide_rect(m, p):
                 print "Gameover!"
-                self.cleanup()
+                self.cleanup_targets()
                 return 1
 
             #targets <--> arrows
