@@ -7,27 +7,22 @@ Created on Thu Apr 4 08:37 2013
 
 import pygame as pg
 from pygame.locals import *
-
 from data.tilemap import Tilemap
 
 
 def main():
-    # initialize pygame modules and create windows
+
     pg.init()
     screen = pg.display.set_mode((800, 600))
 
     pg.display.set_caption('Bow & Arrows')
     pg.mouse.set_visible(1)
-
-    #clock object to set framerate
     clock = pg.time.Clock()
 
-    # create tilemap
-    map = Tilemap()
+    tile = Tilemap()
 
-    #gameloop
-    keepgoing = True
-    while keepgoing:
+    loop = True
+    while loop:
 
         clock.tick(60)
 
@@ -35,19 +30,15 @@ def main():
 
         for event in pg.event.get():
             if event.type == QUIT:
-                keepgoing = False
+                loop = False
                 break
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    keepgoing = False
+                    loop = False
                     break
 
-            map.handle_input(event)
+            tile.handle_input(event)
 
-        map.render(event, screen)
+        tile.render(event, screen)
 
         pg.display.flip()
-
-
-if __name__ == '__main__':
-    main()
