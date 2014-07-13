@@ -12,7 +12,7 @@ class Leftmover (Sprite):
         self.alive2 = alive2
         self.alive = 1
         self.counter = 0
-        self.image = pygame.image.load("./lib/sprites/img/"+alive1)
+        self.image = pygame.image.load("./resources/graphics/"+alive1)
         self.rect = self.image.get_rect()
         self.rect.centerx = x_pos
         self.rect.centery = y_pos
@@ -27,11 +27,11 @@ class Leftmover (Sprite):
             if self.counter == 20:
 
                 if self.alive == 1:
-                    self.image = pygame.image.load("./lib/sprites/img/"+self.alive2)
+                    self.image = pygame.image.load("./resources/graphics/"+self.alive2)
                     self.alive = 2
 
                 elif self.alive == 2:
-                    self.image = pygame.image.load("./lib/sprites/img/"+self.alive1)
+                    self.image = pygame.image.load("./resources/graphics/"+self.alive1)
                     self.alive = 1
 
                 self.counter = 0
@@ -54,7 +54,7 @@ class Leftmover (Sprite):
         return self.rect.centery
 
     def set_shot(self):
-        self.image = pygame.image.load("./lib/sprites/img/"+self.dead)
+        self.image = pygame.image.load("./resources/graphics/"+self.dead)
         self.shot = 1
         self.speed = 1
 

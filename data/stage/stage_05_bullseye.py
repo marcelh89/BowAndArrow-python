@@ -1,7 +1,7 @@
 __author__ = 'marcman'
 
-from stage import Stage
-from lib.sprites.bullseye import Bullseye
+from data.stage.stage import Stage
+from data.components.bullseye import Bullseye
 import random
 
 

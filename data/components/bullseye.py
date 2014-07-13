@@ -13,7 +13,7 @@ class Bullseye(Sprite):
         Sprite.__init__(self)
         #red_balloon
         self.speed = 1
-        self.image = pygame.image.load("./lib/sprites/img/bulls_eye.png")
+        self.image = pygame.image.load("./resources/graphics/bulls_eye.png")
         self.downwards = 0
 
         self.rect = self.image.get_rect()
@@ -63,7 +63,7 @@ class Bullseye(Sprite):
         return self.rect.centerx
 
     def set_shot(self):
-        self.image = pygame.image.load("./lib/sprites/img/butterfly.png")
+        self.image = pygame.image.load("./resources/graphics/butterfly.png")
         self.shot = 1
         self.speed = 1
 

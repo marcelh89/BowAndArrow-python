@@ -1,8 +1,8 @@
-from lib.sprites.butterfly import Butterfly
+from data.components.butterfly import Butterfly
 
 __author__ = 'marcman'
 
-from stage import Stage
+from data.stage.stage import Stage
 import random
 
 

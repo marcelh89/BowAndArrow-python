@@ -1,7 +1,7 @@
 __author__ = 'marcman'
 
-from stage import Stage
-from lib.sprites.volture import Volture
+from data.stage.stage import Stage
+from data.components.volture import Volture
 import random
 
 

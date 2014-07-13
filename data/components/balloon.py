@@ -15,12 +15,12 @@ class Balloon(Sprite):
         #red_balloon
         if self.color == 'RED':
             self.speed = 1
-            self.image = pygame.image.load("./lib/sprites/img/ballon.png")
+            self.image = pygame.image.load("./resources/graphics/ballon.png")
 
         #yello_balloon
         if self.color == 'YELLOW':
             self.speed = 1
-            self.image = pygame.image.load("./lib/sprites/img/ballon_yellow.png")
+            self.image = pygame.image.load("./resources/graphics/ballon_yellow.png")
 
         self.rect = self.image.get_rect()
         self.rect.centerx = x_pos
@@ -48,11 +48,11 @@ class Balloon(Sprite):
     def set_shot(self):
         #red_balloon
         if self.color == 'RED':
-            self.image = pygame.image.load("./lib/sprites/img/ballon_dead.png")
+            self.image = pygame.image.load("./resources/graphics/ballon_dead.png")
 
         #yello_balloon
         if self.color == 'YELLOW':
-            self.image = pygame.image.load("./lib/sprites/img/ballon_yellow_dead.png")
+            self.image = pygame.image.load("./resources/graphics/ballon_yellow_dead.png")
 
         self.shot = 1
         self.speed = 1

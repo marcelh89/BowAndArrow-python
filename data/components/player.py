@@ -6,14 +6,14 @@ Created on Wed May  9 12:32:20 2012
 """
 from pygame.sprite import *
 from pygame.locals import *
-from lib.sprites.arrow import Arrow
+from data.components.arrow import Arrow
 
 
 class Player(Sprite):
     def __init__(self):
         Sprite.__init__(self)
         #bowman simply standing
-        self.image = pygame.image.load("./lib/sprites/img/hero_without_arrow.png")
+        self.image = pygame.image.load("./resources/graphics/hero_without_arrow.png")
         self.rect = self.image.get_rect()
         self.is_arrowed = 0
         self.is_targeting = 0
@@ -36,17 +36,17 @@ class Player(Sprite):
 
     def reload(self):
         #bowman is armed
-        self.image = pygame.image.load("./lib/sprites/img/hero_stand.png")
+        self.image = pygame.image.load("./resources/graphics/hero_stand.png")
         self.is_arrowed = 1
 
     def target(self):
         #bowman is targeting
-        self.image = pygame.image.load("./lib/sprites/img/hero_armed.png")
+        self.image = pygame.image.load("./resources/graphics/hero_armed.png")
         self.is_targeting = 1
 
     def shoot(self):
         #bowman after shoot
-        self.image = pygame.image.load("./lib/sprites/img/hero_without_arrow.png")
+        self.image = pygame.image.load("./resources/graphics/hero_without_arrow.png")
         self.is_arrowed = 0
         self.is_targeting = 0
 

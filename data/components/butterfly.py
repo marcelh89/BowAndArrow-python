@@ -13,7 +13,7 @@ class Butterfly(Sprite):
         Sprite.__init__(self)
         #red_balloon
         self.speed = 1
-        self.image = pygame.image.load("./lib/sprites/img/butterfly_bubled.png")
+        self.image = pygame.image.load("./resources/graphics/butterfly_bubled.png")
         self.downwards = 0
 
         self.rect = self.image.get_rect()
@@ -61,7 +61,7 @@ class Butterfly(Sprite):
         return self.rect.centery
 
     def set_shot(self):
-        self.image = pygame.image.load("./lib/sprites/img/butterfly.png")
+        self.image = pygame.image.load("./resources/graphics/butterfly.png")
         self.shot = 1
         self.speed = 1
 

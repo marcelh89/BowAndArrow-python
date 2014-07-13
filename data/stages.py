@@ -1,15 +1,15 @@
 __author__ = 'marcman'
 
 import pygame
-from stage.stage import Stage
-from stage.stage_01_training import Stage01Training
-from stage.stage_02_more_training import Stage02MoreTraining
-from stage.stage_03_butterflies import Stage03Butterflies
-from stage.stage_04_slimes import Stage04Slimes
-from stage.stage_05_bullseye import Stage05Bullseye
-from stage.stage_06_fires import Stage06Fires
-from stage.stage_07_voltures import Stage07Voltures
-from stage.stage_08_winds import Stage08Winds
+from data.stage.stage import Stage
+from data.stage.stage_01_training import Stage01Training
+from data.stage.stage_02_more_training import Stage02MoreTraining
+from data.stage.stage_03_butterflies import Stage03Butterflies
+from data.stage.stage_04_slimes import Stage04Slimes
+from data.stage.stage_05_bullseye import Stage05Bullseye
+from data.stage.stage_06_fires import Stage06Fires
+from data.stage.stage_07_voltures import Stage07Voltures
+from data.stage.stage_08_winds import Stage08Winds
 import math
 
 

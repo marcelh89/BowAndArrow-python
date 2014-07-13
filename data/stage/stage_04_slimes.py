@@ -1,8 +1,8 @@
-from lib.sprites.slime import Slime
+from data.components.slime import Slime
 
 __author__ = 'marcman'
 
-from stage import Stage
+from data.stage.stage import Stage
 import random
 
 

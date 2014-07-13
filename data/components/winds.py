@@ -7,7 +7,7 @@ Created on Wed May  9 12:32:20 2012
 @author: marcel
 """
 
-from lib.sprites.leftmover import Leftmover
+from data.components.leftmover import Leftmover
 
 
 class Winds(Leftmover):

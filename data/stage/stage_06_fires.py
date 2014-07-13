@@ -1,7 +1,7 @@
 __author__ = 'marcman'
 
-from stage import Stage
-from lib.sprites.fires import Fires
+from data.stage.stage import Stage
+from data.components.fires import Fires
 import random
 
 

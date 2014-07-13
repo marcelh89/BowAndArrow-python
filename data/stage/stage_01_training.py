@@ -1,8 +1,7 @@
 __author__ = 'marcman'
 
-from stage import Stage
-from lib.sprites.balloon import Balloon
-import random
+from data.stage.stage import Stage
+from data.components.balloon import Balloon
 
 
 class Stage01Training(Stage):

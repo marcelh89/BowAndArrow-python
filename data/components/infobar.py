@@ -6,10 +6,10 @@ from pygame.sprite import *
 class Infobar(Sprite):
     def __init__(self, score, stage, stagetext, arrowcount):
         Sprite.__init__(self)
-        self.image = pygame.image.load("./lib/sprites/img/infobar.png")
+        self.image = pygame.image.load("./resources/graphics/infobar.png")
         self.image = pygame.transform.scale(self.image, (800, 30))
         self.rect = self.image.get_rect()
-        self.infobararrow = pygame.image.load("./lib/sprites/img/infobar_arrow.png")
+        self.infobararrow = pygame.image.load("./resources/graphics/infobar_arrow.png")
         self.score = score
         self.stage = stage
         self.stagetext = stagetext

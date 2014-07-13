@@ -1,7 +1,7 @@
 __author__ = 'marcman'
 
-from stage import Stage
-from lib.sprites.winds import Winds
+from data.stage.stage import Stage
+from data.components.winds import Winds
 import random
 
 

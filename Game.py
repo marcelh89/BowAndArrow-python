@@ -5,22 +5,22 @@ Created on Thu Apr 4 08:37 2013
 @author: marcel
 """
 
-import pygame
+import pygame as pg
 from pygame.locals import *
 
-from lib.tilemap import Tilemap
+from data.tilemap import Tilemap
 
 
 def main():
     # initialize pygame modules and create windows
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))
+    pg.init()
+    screen = pg.display.set_mode((800, 600))
 
-    pygame.display.set_caption('Bow & Arrows')
-    pygame.mouse.set_visible(1)
+    pg.display.set_caption('Bow & Arrows')
+    pg.mouse.set_visible(1)
 
     #clock object to set framerate
-    clock = pygame.time.Clock()
+    clock = pg.time.Clock()
 
     # create tilemap
     map = Tilemap()
@@ -33,7 +33,7 @@ def main():
 
         screen.fill((0, 128, 1))
 
-        for event in pygame.event.get():
+        for event in pg.event.get():
             if event.type == QUIT:
                 keepgoing = False
                 break
@@ -46,7 +46,7 @@ def main():
 
         map.render(event, screen)
 
-        pygame.display.flip()
+        pg.display.flip()
 
 
 if __name__ == '__main__':

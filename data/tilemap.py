@@ -1,10 +1,10 @@
 __author__ = 'marcman'
 
-from lib.sprites.player import Player
-from lib.sprites.paper import Paper
+from data.components.player import Player
+from data.components.paper import Paper
 from pygame.locals import *
-from lib.stages import Stages
-from lib.sprites.infobar import Infobar
+from data.stages import Stages
+from data.components.infobar import Infobar
 
 
 class Tilemap(object):

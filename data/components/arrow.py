@@ -14,7 +14,7 @@ class Arrow(Sprite):
         self.speed = 5
         self.stuck = 0
         self.downwards = 0
-        self.image = pygame.image.load("./lib/sprites/img/arrow.png")
+        self.image = pygame.image.load("./resources/graphics/arrow.png")
         self.rect = self.image.get_rect()
         self.rect.center = pygame.mouse.get_pos()
         self.rect.centerx = 150

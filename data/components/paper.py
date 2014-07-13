@@ -6,14 +6,13 @@ Created on Wed May  9 12:32:20 2012
 """
 from pygame.sprite import *
 from pygame.locals import *
-from lib.sprites.arrow import Arrow
 
 
 class Paper(Sprite):
     def __init__(self):
         Sprite.__init__(self)
         #bowman simply standing
-        self.image = pygame.image.load("./lib/sprites/img/paper.png")
+        self.image = pygame.image.load("./resources/graphics/paper.png")
         self.image = pygame.transform.scale(self.image, (500, 400))
         self.rect = self.image.get_rect()
         self.rect.centerx += 150
