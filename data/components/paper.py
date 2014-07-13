@@ -5,7 +5,6 @@ Created on Wed May  9 12:32:20 2012
 @author: marcel
 """
 from pygame.sprite import *
-from pygame.locals import *
 
 
 class Paper(Sprite):
@@ -33,10 +32,10 @@ class Paper(Sprite):
 
 
 def get_description(status):
-        description = ['', 'Finally, you got killed, oh what a pitty', 'Great Job here!']
+        description = ['', 'Finally, you got killed, oh what a pitty', 'Great Job here!', '... is nothing!']
         return description[status]
 
 
 def get_heading(status):
-        heading = ['', 'GAMEOVER', 'SUCCESS']
+        heading = ['', 'GAMEOVER', 'SUCCESS', 'A Bowman without arrows']
         return heading[status]

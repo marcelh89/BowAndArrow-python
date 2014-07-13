@@ -20,13 +20,24 @@ class Tilemap(object):
     def render(self, event, screen):
 
         # render infobar
-        self.infobar.render(screen, self.score, self.stages.stagenumber, self.stages.currentstage.get_description())
+        self.infobar.render(screen, self.score, self.stages.stagenumber, self.stages.currentstage.get_description(),
+                            self.player.get_arrowcount())
 
         #render game
         stat = self.status
         stage = self.stages.stagenumber
 
-        if stat == 1 or stage == 9:
+        if self.player.arrowcount == 0:
+            print "ran out of arrows"
+            self.paper.render(3, screen)
+
+            #check for newgame
+            if event.type == MOUSEBUTTONUP:
+                self.stages.cleanup_all()
+                self.status = 0
+                self.player.reset_arrows()
+
+        elif stat == 1 or stage == 9:
             print "render gameover"
             self.paper.render(stat, screen)
 
@@ -42,6 +53,7 @@ class Tilemap(object):
             #check for click mouse to go on
             if event.type == MOUSEBUTTONUP:
                 self.status = 0
+                self.player.reset_arrows()
 
         else:
             #render player

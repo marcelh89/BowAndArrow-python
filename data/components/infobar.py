@@ -13,12 +13,11 @@ class Infobar(Sprite):
         self.score = score
         self.stage = stage
         self.stagetext = stagetext
-        self.arrowcount = arrowcount
         self.infosprite = pygame.sprite.RenderUpdates()
         self.infosprite.add(self)
         self.font = pygame.font.Font(None, 25)
 
-    def render(self, screen, scoreR, stageR, stagetextR):
+    def render(self, screen, scoreR, stageR, stagetextR, arrowcountR):
         score = self.font.render(str(scoreR), 1, (10, 10, 10))
         stage = self.font.render("Stage " + str(stageR), 1, (10, 10, 10))
         stagetext = self.font.render(stagetextR, 1, (10, 10, 10))
@@ -29,5 +28,5 @@ class Infobar(Sprite):
         screen.blit(stage, (300, 10))
         screen.blit(stagetext, (400, 10))
 
-        for x in range(self.arrowcount):
+        for x in range(arrowcountR):
             screen.blit(self.infobararrow, (600 + x * 5, 10))

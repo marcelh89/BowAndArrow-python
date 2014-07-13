@@ -20,6 +20,7 @@ class Player(Sprite):
         self.arrows = pygame.sprite.RenderUpdates()
         self.playersprite = pygame.sprite.RenderUpdates()
         self.playersprite.add(self)
+        self.arrowcount = 20
 
     def update(self):
         x, y = pygame.mouse.get_pos()
@@ -63,6 +64,7 @@ class Player(Sprite):
             if self.is_arrowed and self.is_targeting:
                 self.shoot()
                 self.arrows.add(Arrow())
+                self.arrowcount -= 1
 
         if pygame.mouse.get_pressed()[0]:
             #print 'leftbutton'
@@ -87,3 +89,9 @@ class Player(Sprite):
                 self.arrows.remove(i)
 
         return self.arrows
+
+    def get_arrowcount(self):
+        return self.arrowcount
+
+    def reset_arrows(self):
+        self.arrowcount = 20
