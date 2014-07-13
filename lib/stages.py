@@ -9,7 +9,6 @@ from stage.stage_05_bullseye import Stage05Bullseye
 from stage.stage_06_fires import Stage06Fires
 from stage.stage_07_voltures import Stage07Voltures
 from stage.stage_08_winds import Stage08Winds
-from lib.sprites.arrow import Arrow
 import math
 
 
@@ -17,7 +16,7 @@ class Stages(object):
 
     def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
-        self.stagenumber = 6
+        self.stagenumber = 5
         self.finished = 1
         self.player = player
 
@@ -51,12 +50,14 @@ class Stages(object):
             stage = Stage08Winds('Whrrrrrrrrr')
             self.targets.add(stage.get_targets())
 
-    def cleanup_targets(self):
-        for a in self.targets:
-            self.targets.remove(a)
+    def cleanup_targets_and_arrows(self):
+        for t in self.targets:
+            self.targets.remove(t)
+        for a in self.player.arrows:
+            self.player.arrows.remove(a)
 
     def cleanup_all(self):
-        self.cleanup_targets()
+        self.cleanup_targets_and_arrows()
         self.stagenumber = 1
         self.finished = 1
 
@@ -71,8 +72,11 @@ class Stages(object):
 
         #check for targets out of range
         for m in self.targets:
-            if m.get_y() > 1000 and m.get_shotstatus() == 1:
-                self.targets.remove(m)
+            y = m.get_y()
+
+            if m.get_shotstatus() == 1:
+                if y > 1000 or y < -500:
+                    self.targets.remove(m)
 
         #check if level already finished
         if len(self.targets) == 0:
@@ -84,10 +88,11 @@ class Stages(object):
         for m in self.targets:
 
             #targets <--> player
-            if pygame.sprite.collide_rect(m, p):
-                print "Gameover!"
-                self.cleanup_targets()
-                return 1
+            if self.stagenumber not in [1, 2, 3]:       # only collide after training and butterfly stages
+                if pygame.sprite.collide_rect(m, p):
+                    #print "Gameover!"
+                    self.cleanup_all()
+                    return 1
 
             #targets <--> arrows
             for a in arrows:
@@ -97,29 +102,24 @@ class Stages(object):
                     mr = m.get_rect()
                     ar = a.get_rect()
 
-                    #TODO collidepoint
                     if mr.collidepoint(ar.center):
                         deltay = ar.midright[1]-mr.centery
                         deltay = math.fabs(deltay)
-                        print str(mr)+" -- "+str(ar.center)
-                        print deltay
                         a.set_stuck()
                         a.set_downwards(m.get_downwards())
 
                         if deltay < 4.0:
                             m.set_shot()
-                            self.cleanup()
+                            self.cleanup_targets_and_arrows()
 
                 else:
-                    #inaccurate for balloons - subtract 70 see Arrow init
                     if pygame.sprite.collide_rect(a, m):
-                        #if m.rect.collidepoint(a.get_x, a.get_y):
                         m.set_shot()
 
         #render all targets
         self.targets.draw(screen)
         self.targets.update()
 
-        #print len(self.targets)
+        print len(self.targets)
 
         return 0

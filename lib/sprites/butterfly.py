@@ -50,7 +50,8 @@ class Butterfly(Sprite):
         else:
             self.rect.centery -= self.speed * 3
             self.rect.centerx -= self.speed * 2
-            if self.rect.centery < -100:
+
+            if self.rect.centery < -50 or self.rect.centerx <= -50:
                 self.out_of_bounds = 1
 
     def get_rect(self):
