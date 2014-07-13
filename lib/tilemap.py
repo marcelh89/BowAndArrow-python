@@ -4,7 +4,7 @@ from lib.sprites.player import Player
 from lib.sprites.paper import Paper
 from pygame.locals import *
 from lib.stages import Stages
-
+from lib.sprites.infobar import Infobar
 
 class Tilemap(object):
 
@@ -12,11 +12,18 @@ class Tilemap(object):
 
         self.player = Player()
         self.paper = Paper()
-        self.stages = Stages(self.player)
+        self.score = 0
         self.status = 0
+        self.stages = Stages(self.player)
+        self.infobar = Infobar(self.score, 1, "Training", 20)
+
 
     def render(self, event, screen):
 
+        #render infobar
+        self.infobar.render(screen, self.score, self.stages.stagenumber)
+
+        #render game
         stat = self.status
         stage = self.stages.stagenumber
 
