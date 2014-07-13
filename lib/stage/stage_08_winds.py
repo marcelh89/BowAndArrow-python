@@ -4,8 +4,8 @@ from stage import Stage
 from lib.sprites.winds import Winds
 import random
 
-class Stage08Winds(Stage):
 
+class Stage08Winds(Stage):
     def __init__(self, description):
         Stage.__init__(self, description)
         self.targets = []

@@ -6,7 +6,6 @@ import random
 
 
 class Stage07Voltures(Stage):
-
     def __init__(self, description):
         Stage.__init__(self, description)
         self.targets = []

@@ -6,7 +6,6 @@ import random
 
 
 class Stage05Bullseye(Stage):
-
     def __init__(self, description):
         Stage.__init__(self, description)
         self.targets = []

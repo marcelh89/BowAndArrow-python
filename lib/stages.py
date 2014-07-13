@@ -14,7 +14,6 @@ import math
 
 
 class Stages(object):
-
     def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
         self.stagenumber = 1
@@ -67,7 +66,7 @@ class Stages(object):
 
         p = self.player
 
-        #create monsters
+        # create monsters
         if self.finished:
             self.finished = 0
             self.handle_targets()
@@ -90,7 +89,7 @@ class Stages(object):
         for m in self.targets:
 
             #targets <--> player
-            if self.stagenumber not in [1, 2, 3]:       # only collide after training and butterfly stages
+            if self.stagenumber not in [1, 2, 3]:  # only collide after training and butterfly stages
                 if pygame.sprite.collide_rect(m, p):
                     #print "Gameover!"
                     self.cleanup_all()
@@ -105,7 +104,7 @@ class Stages(object):
                     ar = a.get_rect()
 
                     if mr.collidepoint(ar.center):
-                        deltay = ar.midright[1]-mr.centery
+                        deltay = ar.midright[1] - mr.centery
                         deltay = math.fabs(deltay)
                         a.set_stuck()
                         a.set_downwards(m.get_downwards())

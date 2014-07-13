@@ -2,6 +2,7 @@ __author__ = 'marcman'
 
 from pygame.sprite import *
 
+
 class Infobar(Sprite):
     def __init__(self, score, stage, stagetext, arrowcount):
         Sprite.__init__(self)
@@ -18,9 +19,8 @@ class Infobar(Sprite):
         self.font = pygame.font.Font(None, 25)
 
     def render(self, screen, scoreR, stageR, stagetextR):
-
         score = self.font.render(str(scoreR), 1, (10, 10, 10))
-        stage = self.font.render("Stage "+str(stageR), 1, (10, 10, 10))
+        stage = self.font.render("Stage " + str(stageR), 1, (10, 10, 10))
         stagetext = self.font.render(stagetextR, 1, (10, 10, 10))
 
         self.infosprite.draw(screen)
@@ -30,4 +30,4 @@ class Infobar(Sprite):
         screen.blit(stagetext, (400, 10))
 
         for x in range(self.arrowcount):
-            screen.blit(self.infobararrow, (600 + x*5, 10))
+            screen.blit(self.infobararrow, (600 + x * 5, 10))

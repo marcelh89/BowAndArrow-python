@@ -6,7 +6,6 @@ import random
 
 
 class Stage01Training(Stage):
-
     def __init__(self, description):
         Stage.__init__(self, description)
         self.targets = (Balloon('RED', x * 30 + 300, 600) for x in range(15))

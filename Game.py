@@ -12,7 +12,7 @@ from lib.tilemap import Tilemap
 
 
 def main():
-    #initialize pygame modules and create windows
+    # initialize pygame modules and create windows
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
 

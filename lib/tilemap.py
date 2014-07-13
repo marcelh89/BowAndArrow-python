@@ -8,7 +8,6 @@ from lib.sprites.infobar import Infobar
 
 
 class Tilemap(object):
-
     def __init__(self):
 
         self.player = Player()
@@ -20,7 +19,7 @@ class Tilemap(object):
 
     def render(self, event, screen):
 
-        #render infobar
+        # render infobar
         self.infobar.render(screen, self.score, self.stages.stagenumber, self.stages.currentstage.get_description())
 
         #render game

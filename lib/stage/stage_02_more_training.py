@@ -6,7 +6,6 @@ from lib.sprites.balloon import Balloon
 
 
 class Stage02MoreTraining(Stage):
-
     def __init__(self, description):
         Stage.__init__(self, description)
         self.targets = []
@@ -15,5 +14,3 @@ class Stage02MoreTraining(Stage):
 
     def get_targets(self):
         return self.targets
-
-
