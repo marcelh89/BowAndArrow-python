@@ -1,6 +1,7 @@
 __author__ = 'marcman'
 
 import pygame
+from stage.stage import Stage
 from stage.stage_01_training import Stage01Training
 from stage.stage_02_more_training import Stage02MoreTraining
 from stage.stage_03_butterflies import Stage03Butterflies
@@ -16,39 +17,40 @@ class Stages(object):
 
     def __init__(self, player):
         self.targets = pygame.sprite.RenderUpdates()
-        self.stagenumber = 5
+        self.stagenumber = 1
         self.finished = 1
         self.player = player
+        self.currentstage = Stage("Dummy")
 
     def handle_targets(self):
         nr = self.stagenumber
 
         if nr == 1:
-            stage = Stage01Training('Target Practice')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage01Training('Target Practice')
+            self.targets.add(self.currentstage.get_targets())
 
         elif nr == 2:
-            stage = Stage02MoreTraining('More Target Practise')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage02MoreTraining('More Target Practise')
+            self.targets.add(self.currentstage.get_targets())
 
         elif nr == 3:
-            stage = Stage03Butterflies('Bouncing Bubbles')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage03Butterflies('Bouncing Bubbles')
+            self.targets.add(self.currentstage.get_targets())
         elif nr == 4:
-            stage = Stage04Slimes('Slimed')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage04Slimes('Slimed')
+            self.targets.add(self.currentstage.get_targets())
         elif nr == 5:
-            stage = Stage05Bullseye('Bulls Eye')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage05Bullseye('Bulls Eye')
+            self.targets.add(self.currentstage.get_targets())
         elif nr == 6:
-            stage = Stage06Fires('Fireballs')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage06Fires('Fireballs')
+            self.targets.add(self.currentstage.get_targets())
         elif nr == 7:
-            stage = Stage07Voltures('Unfriendly Skies')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage07Voltures('Unfriendly Skies')
+            self.targets.add(self.currentstage.get_targets())
         elif nr == 8:
-            stage = Stage08Winds('Whrrrrrrrrr')
-            self.targets.add(stage.get_targets())
+            self.currentstage = Stage08Winds('Whrrrrrrrrr')
+            self.targets.add(self.currentstage.get_targets())
 
     def cleanup_targets_and_arrows(self):
         for t in self.targets:

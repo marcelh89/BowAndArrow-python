@@ -21,7 +21,7 @@ class Tilemap(object):
     def render(self, event, screen):
 
         #render infobar
-        self.infobar.render(screen, self.score, self.stages.stagenumber)
+        self.infobar.render(screen, self.score, self.stages.stagenumber, self.stages.currentstage.get_description())
 
         #render game
         stat = self.status
