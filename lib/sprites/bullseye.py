@@ -69,3 +69,6 @@ class Bullseye(Sprite):
 
     def get_shotstatus(self):
         return self.shot
+
+    def get_downwards(self):
+        return self.downwards

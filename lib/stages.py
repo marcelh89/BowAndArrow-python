@@ -9,6 +9,8 @@ from stage.stage_05_bullseye import Stage05Bullseye
 from stage.stage_06_fires import Stage06Fires
 from stage.stage_07_voltures import Stage07Voltures
 from stage.stage_08_winds import Stage08Winds
+from lib.sprites.arrow import Arrow
+import math
 
 
 class Stages(object):
@@ -91,8 +93,19 @@ class Stages(object):
                     mr = m.get_rect()
                     ar = a.get_rect()
 
-                    if mr.collidepoint(ar.centerx, ar.centery):
-                        m.set_shot()
+                    #TODO collidepoint
+                    if mr.collidepoint(ar.center):
+                        deltay = ar.midright[1]-mr.centery
+                        deltay = math.fabs(deltay)
+                        print str(mr)+" -- "+str(ar.center)
+                        print deltay
+                        a.set_stuck()
+                        a.set_downwards(m.get_downwards())
+
+                        if deltay < 4.0:
+                            m.set_shot()
+                            self.cleanup()
+
                 else:
                     #inaccurate for balloons - subtract 70 see Arrow init
                     if pygame.sprite.collide_rect(a, m):
@@ -103,6 +116,6 @@ class Stages(object):
         self.targets.draw(screen)
         self.targets.update()
 
-        print len(self.targets)
+        #print len(self.targets)
 
         return 0

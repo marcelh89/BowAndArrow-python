@@ -11,6 +11,9 @@ class Arrow(Sprite):
     def __init__(self):
         Sprite.__init__(self)
         #bowman simply standing
+        self.speed = 5
+        self.stuck = 0
+        self.downwards = 0
         self.image = pygame.image.load("./lib/sprites/img/arrow.png")
         self.rect = self.image.get_rect()
         self.rect.center = pygame.mouse.get_pos()
@@ -24,7 +27,16 @@ class Arrow(Sprite):
         self.rect.centery -= 11
 
     def update(self):
-        self.rect.centerx += 5
+        if self.stuck:
+
+            self.speed = 1
+
+            if self.downwards:
+                    self.rect.centery += self.speed
+            else:
+                    self.rect.centery -= self.speed
+        else:
+            self.rect.centerx += self.speed
 
     def get_x(self):
         return self.rect.centerx
@@ -35,5 +47,15 @@ class Arrow(Sprite):
     def get_y(self):
         return self.rect.centery
 
-    def set_x(self):
-        self.rect.centerx += 70
+    def set_x(self, x):
+        self.rect.centerx = x
+
+    def set_y(self, y):
+        self.rect.centerx = y
+
+    def set_stuck(self, ):
+        self.stuck = 1
+        self.speed = 0
+
+    def set_downwards(self, downwards):
+        self.downwards = downwards
