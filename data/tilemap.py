@@ -28,7 +28,7 @@ class Tilemap(object):
         stage = self.stages.stagenumber
 
         if self.player.arrowcount == 0:
-            print "ran out of arrows"
+            print ("ran out of arrows")
             self.paper.render(3, screen)
 
             #check for newgame
@@ -38,7 +38,7 @@ class Tilemap(object):
                 self.player.reset_arrows()
 
         elif stat == 1 or stage == 9:
-            print "render gameover"
+            print ("render gameover")
             self.paper.render(stat, screen)
 
             #check for newgame
@@ -47,7 +47,7 @@ class Tilemap(object):
                 self.status = 0
 
         elif stat == 2:
-            print "render stagecomplete"
+            print ("render stagecomplete")
             self.paper.render(stat, screen)
 
             #check for click mouse to go on
